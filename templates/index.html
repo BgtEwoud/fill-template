@@ -20,11 +20,38 @@
             background-color: #007bff;
             border: none;
         }
+        .info-section {
+            background-color: #e9ecef;
+            padding: 20px;
+            border-radius: 5px;
+            margin-bottom: 30px;
+        }
+        .info-section h3 {
+            color: #007bff;
+        }
     </style>
 </head>
 <body>
     <div class="container">
         <h1 class="text-center">Upload Documenten en Excel Bestand</h1>
+
+        <!-- Uitleg sectie -->
+        <div class="info-section">
+            <h3>Hoe bereid je de bestanden voor?</h3>
+            <p>Volg deze stappen om de rapporten correct te genereren:</p>
+            <ul>
+                <li>In je <strong>Word-documenten</strong> (templates) moet je de velden die je wilt parametriseren aanduiden met dubbele accolades, bijvoorbeeld <code>{{PARAMETER}}</code>. Deze placeholders worden vervangen door de waarden uit het Excel-bestand.</li>
+                <li>In het <strong>Excel-bestand</strong> moeten de kolommen overeenkomen met de parameternaam die je in het Word-document hebt aangegeven. De eerste kolom moet een lijst van de parameters bevatten, zoals <code>NAAM_VENNOOTSCHAP</code>, en de andere kolommen bevatten de waarden die je voor elke parameter wilt invullen.</li>
+                <li>Voorbeeld:<br>
+                    <strong>In Word</strong>: <code>{{NAAM_VENNOOTSCHAP}}</code><br>
+                    <strong>In Excel</strong>: <br>
+                    <code>NAAM_VENNOOTSCHAP | Waarde1 | Waarde2</code>
+                </li>
+                <li>Zorg ervoor dat het Word-document de juiste template is en dat de Excel-sheet de correcte parameters bevat.</li>
+            </ul>
+        </div>
+
+        <!-- Formulier voor bestanduploads -->
         <form action="/generate" method="post" enctype="multipart/form-data" class="mt-4">
             <div class="form-group">
                 <label for="docx_files">Selecteer .docx bestanden (meerdere toegestaan):</label>
